@@ -25,17 +25,21 @@ function divide(a,b){
     return a/b;
 }
 
+function comma(a,b){
+    return a.toString()+"."+b.toString();
+}
+
 function calculate(s){
     console.log("L8: " + s);
-    let signs = ["*", "/", "+", "-"];
-    let funcs = [multiply, divide, add, subtract];
+    let signs = [".", "*", "/", "+", "-"];
+    let funcs = [comma, multiply, divide, add, subtract];
     let tokens = s.split(/\b/);
     for (let round = 0; round < signs.length; round++) {
         console.log("L25: " + tokens.join(" "));          
         for (let place = 0; place <tokens.length; place++) {
             if (tokens[place] == signs[round]) {
-                let a = parseInt(tokens[place - 1]);
-                let b = parseInt(tokens[place + 1]);
+                let a = parseFloat(tokens[place - 1]);
+                let b = parseFloat(tokens[place + 1]);
                 let result = funcs[round](a,b);
                 tokens[place -1] = result.toString();
                 tokens.splice(place--, 2);
@@ -47,5 +51,5 @@ function calculate(s){
 }
 
 
-let s = "2*4+12-15/3";
+let s = "10.5*2.5";
 console.log("L31: " + calculate(s));
