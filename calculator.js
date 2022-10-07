@@ -29,6 +29,7 @@ const displayResult = document.getElementById("resultString");
 const operators = [".", "/", "*", "+", "-"];
  
 
+// Perform the calculator on the input string.
 function calculate(s){
     function comma(a,b){return a.toString()+"."+b.toString();}
 
@@ -63,30 +64,30 @@ function calculate(s){
     return tokens[0];
 }
 
+// Updates the input String in the gui
 function updateInputString() {
     displayInput.textContent = inputString;
 }
 
+//Clears the inputstring in the gui
 function clearInput() {
     inputString = "";
     updateInputString();
 }
 
+//removes the last character in the gui
 function backspace() {
     inputString = inputString.slice(0, inputString.length-1);
     updateInputString();
 }
 
-function addToCalculation(x){
-    inputString = inputString + x;
-    updateInputString();
-}
-
+//adds a digit tot the input string
 function addDigit(n) {
     inputString = inputString + n;
     updateInputString();
 }
 
+//adds an operator to the inputString
 function addOperator(o) {
     if (operators.includes(inputString.slice(-1))) {
         return;
@@ -98,6 +99,7 @@ function addOperator(o) {
     updateInputString();
 }
 
+//adds a comma to the input
 function addComma() {
     if (inputString.slice(-1) == ".") {
         return;
@@ -109,6 +111,8 @@ function addComma() {
     updateInputString();
 }
 
+//NOT IMPLEMENTED 
+//adds a negative sign to the input
 function negate() {
     //Not implemented yet
     //inputString = inputString + "+0-";
@@ -116,11 +120,13 @@ function negate() {
     updateInputString();
 }
 
+// is run when the user press Ansa and input the last result.
 function pressAns(){
     inputString = inputString + ans;
     updateInputString();
 }
 
+//Is run whe nthe user press =
 function pressEqual(){
     if (!validateInput()) {
         return;
@@ -134,19 +140,16 @@ function pressEqual(){
     updateInputString(); 
 }
 
+// Check that the input is valid
 function validateInput() {
-    // Check if the input is valid
-
-    // TODO implement this...
+    if (operators.includes(inputString.slice(-1))) {
+        return false;
+    }
     return true;
 }
 
+let ans = "";
 let inputString = "";
 updateInputString();
-
-let ans = "";
-
-
-
-//let inputString = "10/5*3.14*6.25/3+56/4.6-7*0.23/0.12";
-//console.log("L31: " + calculate(inputString));
+displayOldInput.textContent = "";
+displayResult.textContent = "";
