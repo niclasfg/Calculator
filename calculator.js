@@ -26,6 +26,9 @@ const displayInput = document.getElementById("inputString");
 const displayOldInput = document.getElementById("oldInputString");
 const displayResult = document.getElementById("resultString");
 
+const operators = [".", "/", "*", "+", "-"];
+ 
+
 function calculate(s){
     function comma(a,b){return a.toString()+"."+b.toString();}
 
@@ -85,6 +88,9 @@ function addDigit(n) {
 }
 
 function addOperator(o) {
+    if (operators.includes(inputString.slice(-1))) {
+        return;
+    }
     if (inputString == "") {
         pressAns();
     }
@@ -93,7 +99,13 @@ function addOperator(o) {
 }
 
 function addComma() {
-    inputString = inputString + ",";
+    if (inputString.slice(-1) == ".") {
+        return;
+    }
+    if (operators.includes(inputString.slice(-1))) {
+        inputString = inputString + "0";
+    }
+    inputString = inputString + ".";
     updateInputString();
 }
 
@@ -124,6 +136,8 @@ function pressEqual(){
 
 function validateInput() {
     // Check if the input is valid
+
+    // TODO implement this...
     return true;
 }
 
