@@ -27,6 +27,8 @@ const displayOldInput = document.getElementById("oldInputString");
 const displayResult = document.getElementById("resultString");
 
 const operators = [".", "/", "*", "+", "-"];
+
+const commaRegExp = new RegExp('\.[0-9]+$');
  
 
 // Perform the calculator on the input string.
@@ -101,6 +103,9 @@ function addOperator(o) {
 
 //adds a comma to the input
 function addComma() {
+    if (commaRegExp.test(inputString)) {
+        return;
+    }
     if (inputString.slice(-1) == ".") {
         return;
     }
