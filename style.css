@@ -24,7 +24,7 @@
     display: flex;
     flex-direction: column;
 
-    border: none;
+    border: 1px solid black;
 }
 
 .disaplyFrame{
@@ -32,10 +32,15 @@
     display: flex;
     justify-content: end;
     align-items: center;
+    border: solid rgba(0.5, 0.5, 0.5, 0.5);
 
 }
 .displayFrame p {
     font-size: 20px;
+    text-align: end;
+
+    padding: 5px;
+    margin: 5px;
 }
 .buttonFrame {
     flex: 1 80%;
@@ -43,12 +48,20 @@
     flex-wrap: wrap;
 }
 
-.digidButton {
-    background-color: white;
+button:hover {
+    opacity: 0.5;
+  }
+  
+  button:active {
+    opacity: 1;
+  }
+
+.digitButton {
+    background-color: whitesmoke;
 }
 
 .operatorButton {
-    background-color: lightgray;
+    background-color: lightblue;
 }
 
 .buttonFrame button{
